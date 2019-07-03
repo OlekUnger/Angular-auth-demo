@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --output-path ungers-demo-auth --aot --prod",
-    "dev": "ng start"
+    "dev": "ng serve"
   },
   "engines": {
     "node": "10.15.3",
