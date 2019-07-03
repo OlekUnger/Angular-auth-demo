@@ -1,0 +1,68 @@
+<div>
+    <h3>Регистрация</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="exampleInputEmail">Логин</label>
+            <input
+                    type="email"
+                    class="form-control"
+                    id="exampleInputEmail"
+                    placeholder="Логин"
+                    formControlName="login"
+            >
+            <span
+                    class="red-text"
+                    *ngIf="form.get('login').invalid && form.get('login').touched"
+            >
+                <span *ngIf="form.get('login').errors['required']">Логин не указан.</span>
+                <span *ngIf="form.get('login').errors['loginExists']">Этот логин занят</span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword">Пароль</label>
+            <input
+                    type="password"
+                    class="form-control"
+                    id="exampleInputPassword"
+                    placeholder="Пароль"
+                    formControlName="password"
+            >
+            <span
+                    class="red-text"
+                    *ngIf="form.get('password').invalid && form.get('password').touched"
+            >
+                <span *ngIf="form.get('password').errors['required']">Пароль не указан.</span>
+                <span
+                        *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
+                    Пароль должен быть больше {{form.get('password').errors['minlength']['requiredLength']}} символов
+                </span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputOrganization">Организация</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputOrganization"
+                    placeholder="Организация"
+                    formControlName="organization"
+            >
+
+        </div>
+        <button
+                type="submit"
+                class="btn btn-block btn-primary"
+                [disabled]="form.invalid || form.disabled"
+        >Зарегистрироваться</button>
+        <div class="form-group">
+            <p class="text-muted text-xs-center">
+                <a [routerLink]="['/login']">
+                    Войти
+                </a>
+            </p>
+        </div>
+    </form>
+</div>
+
+
+
